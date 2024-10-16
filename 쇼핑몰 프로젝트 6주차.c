@@ -19,8 +19,8 @@ int main() {
     int maxID;
     int min = 1000;
     int minID;
-    char* maxroomname = "¾øÀ½";
-    char* minroomname = "¾øÀ½";
+    char* maxroomname = "ì—†ìŒ";
+    char* minroomname = "ì—†ìŒ";
 
 
     for (int j = 0; j < 5; j++)
@@ -31,13 +31,13 @@ int main() {
     }
     char ID_name[5][100];
     do {
-        printf("¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.(1. ÀÔ°í, 2. ÆÇ¸Å, 3. °³º°ÇöÈ². 4. ÀüÃ¼ÇöÈ². 5. Á¾·á): ");
+        printf("ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.(1. ì…ê³ , 2. íŒë§¤, 3. ê°œë³„í˜„í™©. 4. ì „ì²´í˜„í™©. 5. ì¢…ë£Œ): ");
         scanf("%d", &menu);
 
         switch (menu) {
         case 1:
             system("cls");
-            printf("»óÇ° ID: ");
+            printf("ìƒí’ˆ ID: ");
             scanf("%d", &ids);
             int i;
             for (i = 0; i < 5; i++)
@@ -45,10 +45,10 @@ int main() {
 
                 if (ID[i][0] == ids && ID[i][0] != 0)
                 {
-                    printf("ÀÔ°í·®: ");
+                    printf("ì…ê³ ëŸ‰: ");
                     scanf("%d", &quantity);
                     ID[i][1] += quantity;
-                    printf("ÆÇ¸Å°¡°İ: ");
+                    printf("íŒë§¤ê°€ê²©: ");
                     scanf("%d", &price);
                     ID[i][3] = price;
                     break;
@@ -56,12 +56,12 @@ int main() {
                 else if (ID[i][0] == 0)
                 {
                     ID[i][0] = ids;
-                    printf("»óÇ°¸í: ");
+                    printf("ìƒí’ˆëª…: ");
                     scanf("%s", ID_name[i]);
-                    printf("ÀÔ°í·®: ");
+                    printf("ì…ê³ ëŸ‰: ");
                     scanf("%d", &quantity);
                     ID[i][1] += quantity;
-                    printf("ÆÇ¸Å°¡°İ: ");
+                    printf("íŒë§¤ê°€ê²©: ");
                     scanf("%d", &price);
                     ID[i][3] = price;
 
@@ -74,18 +74,18 @@ int main() {
             }
             if (i == 5)
             {
-                printf("»óÇ°ÀÇ °¹¼ö¸¦ ÃÊ°úÇÏ¿´½À´Ï´Ù\n");
+                printf("ìƒí’ˆì˜ ê°¯ìˆ˜ë¥¼ ì´ˆê³¼í•˜ì˜€ìŠµë‹ˆë‹¤\n");
             }
 
             break;
         case 2:
             system("cls");
-            printf("»óÇ° ID: ");
+            printf("ìƒí’ˆ ID: ");
             scanf("%d", &ids);
             for (i = 0; i < 5; i++)
             {
                 if (ID[i][0] == ids) {
-                    printf("ÆÇ¸Å ¼ö·® :");
+                    printf("íŒë§¤ ìˆ˜ëŸ‰ :");
                     scanf("%d", &output);
                     ID[i][2] = output;
                     break;
@@ -94,33 +94,33 @@ int main() {
 
             }
             if (ID[i][0] != ids) {
-                printf("ID°¡ Àß¸ø ÀÔ·ÂµÇ¾ú½À´Ï´Ù.\n");
+                printf("IDê°€ ì˜ëª» ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
             }
             break;
 
 
         case 3:
             system("cls");
-            printf("»óÇ° ID: ");
+            printf("ìƒí’ˆ ID: ");
             scanf("%d", &ids);
             for (i = 0; i < 5; i++)
             {
                 if (ID[i][0] == ids) 
                 {
                     printf("ID :%d\n", ID[i][0]);
-                    printf("»óÇ°¸í : %s\n", ID_name[i]);
-                    printf("»óÇ°°¡°İ :%d\n", ID[i][3]);
-                    printf("ÀÔ°í·® :%d\n", ID[i][1]);
-                    printf("ÆÇ¸Å·® :%d\n", ID[i][2]);
+                    printf("ìƒí’ˆëª… : %s\n", ID_name[i]);
+                    printf("ìƒí’ˆê°€ê²© :%d\n", ID[i][3]);
+                    printf("ì…ê³ ëŸ‰ :%d\n", ID[i][1]);
+                    printf("íŒë§¤ëŸ‰ :%d\n", ID[i][2]);
                     totalOutprice = 0;
                     totalOutprice = ID[i][2] * ID[i][3];
                     
-                    printf("ID: %d ÀÇ ÆÇ¸Å±İ¾× :%d\n", ids ,totalOutprice);
+                    printf("ID: %d ì˜ íŒë§¤ê¸ˆì•¡ :%d\n", ids ,totalOutprice);
                     break;
                 }
             }   if (i == 5)
                 {
-                printf("ID°¡ Àß¸ø ÀÔ·ÂµÇ¾ú½À´Ï´Ù.\n");
+                printf("IDê°€ ì˜ëª» ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
                 }
             
             break;
@@ -154,19 +154,19 @@ int main() {
 
             }
             if (min == 1000) {
-                minroomname = "¾øÀ½";
+                minroomname = "ì—†ìŒ";
             }
             ALLpanmeayul = ((float)ALLpanmea / ALLepgo) * 100;
-            printf("Àç°í¼ö·®: ");
+            printf("ì¬ê³ ìˆ˜ëŸ‰: ");
             for (int i = 0; i < 5; i++)
             {
                 printf("%d ", ID[i][1] - ID[i][2]);
             }
             
             printf("\n");
-            printf("ÃÑ ÆÇ¸Å·® : %d(ÆÇ¸ÅÀ²:%0.2f%%)\n", ALLpanmea, ALLpanmeayul);
-            printf("°¡Àå ¸¹ÀÌ ÆÇ¸ÅµÈ »óÇ° : ID %d, »óÇ°¸í:%s, ÆÇ¸Å·® %d\n", maxID, maxroomname, max);
-            printf("°¡Àå Àû°Ô ÆÇ¸ÅµÈ »óÇ° : ID %d, »óÇ°¸í:%s, ÆÇ¸Å·® %d\n", minID, minroomname, min);
+            printf("ì´ íŒë§¤ëŸ‰ : %d(íŒë§¤ìœ¨:%0.2f%%)\n", ALLpanmea, ALLpanmeayul);
+            printf("ê°€ì¥ ë§ì´ íŒë§¤ëœ ìƒí’ˆ : ID %d, ìƒí’ˆëª…:%s, íŒë§¤ëŸ‰ %d\n", maxID, maxroomname, max);
+            printf("ê°€ì¥ ì ê²Œ íŒë§¤ëœ ìƒí’ˆ : ID %d, ìƒí’ˆëª…:%s, íŒë§¤ëŸ‰ %d\n", minID, minroomname, min);
             for (int h = 0; h < 5; h++) {
                 if (ID[h][1] - ID[h][2] <= 2)
                 {
@@ -176,15 +176,15 @@ int main() {
                     buzok_ID = h + 1;
                     buzok_name = ID_name[h];
                     buzokjeago = ID[h][1] - ID[h][2];
-                    printf("»óÇ° ID %d: »óÇ°¸í: %s Àç°íºÎÁ·(%d)\n", buzok_ID, buzok_name, buzokjeago);
+                    printf("ìƒí’ˆ ID %d: ìƒí’ˆëª…: %s ì¬ê³ ë¶€ì¡±(%d)\n", buzok_ID, buzok_name, buzokjeago);
                 }
             }
             break;
         case 5:
-            printf("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.\n");
+            printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
             break;
         default:
-            printf("Àß¸øµÈ ¼±ÅÃÀÔ´Ï´Ù.\n");
+            printf("ì˜ëª»ëœ ì„ íƒì…ë‹ˆë‹¤.\n");
             system("cls");
             break;
         }
