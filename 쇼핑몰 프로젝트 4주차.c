@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define MSG_MAIN    "¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä"
-#define MSG_MENU0   "1. ÀÔ°í\n"
-#define MSG_MENU1   "2. ÆÇ¸Å\n"
-#define MSG_MENU2   "3. »óÇ°ÇöÈ²\n"
-#define MSG_MENU3   "4. »óÇ°¸í ÀÔ·Â\n"
-#define MSG_MENU4   "5. Á¾·á\n"
-#define MSG_EXIT    ":ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù."
+#define MSG_MAIN    "ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”"
+#define MSG_MENU0   "1. ì…ê³ \n"
+#define MSG_MENU1   "2. íŒë§¤\n"
+#define MSG_MENU2   "3. ìƒí’ˆí˜„í™©\n"
+#define MSG_MENU3   "4. ìƒí’ˆëª… ì…ë ¥\n"
+#define MSG_MENU4   "5. ì¢…ë£Œ\n"
+#define MSG_EXIT    ":í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤."
 
 void printMENU(void) {
     printf(MSG_MENU0);
@@ -29,16 +29,16 @@ int main() {
     int ID;
     int min = 1000;
     int minroom = 0;
-    char* minname = "¾øÀ½";
+    char* minname = "ì—†ìŒ";
     int max = 0;
     int maxroom = 0;
-    char* maxname = "¾øÀ½";
+    char* maxname = "ì—†ìŒ";
     int input = 0;
     int ininput = 0;
     int outinput = 0;
     char Name = 0;
 
-    printf("1~100±îÁöÀÇ »óÇ° °³¼ö ÀÔ·ÂEnter>\n");
+    printf("1~100ê¹Œì§€ì˜ ìƒí’ˆ ê°œìˆ˜ ì…ë ¥Enter>\n");
     scanf("%d", &a);
     do {
         printMENU();
@@ -46,12 +46,12 @@ int main() {
         system("cls");
         switch (input) {
         case 1:
-            printf("1. ÀüÃ¼ »óÇ° ÀÔ°í¼ö·® ÀÔ·Â\n ");
-            printf("2. °³º° »óÇ° ÀÔ·Â \n");
+            printf("1. ì „ì²´ ìƒí’ˆ ì…ê³ ìˆ˜ëŸ‰ ì…ë ¥\n ");
+            printf("2. ê°œë³„ ìƒí’ˆ ì…ë ¥ \n");
             scanf("%d", &ininput);
             if (ininput == 1) {
                 for (int i = 0; i < a; i++) {
-                    printf("»óÇ°º° ÀÔ°í¼ö·® ÀÔ·ÂEnter>\n");
+                    printf("ìƒí’ˆë³„ ì…ê³ ìˆ˜ëŸ‰ ì…ë ¥Enter>\n");
                     int b = 0;
                     scanf("%d", &b);
                     insum += b;
@@ -59,9 +59,9 @@ int main() {
                 }
             }
             else if (ininput == 2) {
-                printf("»óÇ°ID :\n");
+                printf("ìƒí’ˆID :\n");
                 scanf("%d", &ID);
-                printf("ÀÔ°í¼ö·®:\n");
+                printf("ì…ê³ ìˆ˜ëŸ‰:\n");
                 ID--;
                 scanf("%d", &b);
                 insum += b;
@@ -69,21 +69,21 @@ int main() {
             }
             break;
         case 2:
-            printf("1. ÀüÃ¼ »óÇ° ÆÇ¸Å¼ö·® ÀÔ·Â\n ");
-            printf("2. °³º° »óÇ° ÀÔ·Â \n ");
+            printf("1. ì „ì²´ ìƒí’ˆ íŒë§¤ìˆ˜ëŸ‰ ì…ë ¥\n ");
+            printf("2. ê°œë³„ ìƒí’ˆ ì…ë ¥ \n ");
             scanf("%d", &outinput);
             if (outinput = 1) {
                 for (int j = 0; j < a; j++) {
-                    printf("»óÇ°º° ÆÇ¸Å¼ö·® ÀÔ·ÂEnter>\n");
+                    printf("ìƒí’ˆë³„ íŒë§¤ìˆ˜ëŸ‰ ì…ë ¥Enter>\n");
                     scanf("%d", &c);
                     sellsum += c;
                     out_num[j] += c;
                 }
             }
             else if (outinput = 2) {
-                printf("»óÇ°ID :\n");
+                printf("ìƒí’ˆID :\n");
                 scanf("%d", &ID);
-                printf("ÀÔ°í¼ö·®:\n");
+                printf("ì…ê³ ìˆ˜ëŸ‰:\n");
                 int c = 0;
                 scanf("%d", &c);
                 sellsum += c;
@@ -103,9 +103,9 @@ int main() {
                 }
             }
 
-            // ÃÖ¼Ò ÆÇ¸Å·® »óÇ° Ã£±â
+            // ìµœì†Œ íŒë§¤ëŸ‰ ìƒí’ˆ ì°¾ê¸°
             for (int i = 0; i < a; i++) {
-                if (out_num[i] < min && out_num[i] > 0) { // ÆÇ¸Å·®ÀÌ 0º¸´Ù Å« °æ¿ì
+                if (out_num[i] < min && out_num[i] > 0) { // íŒë§¤ëŸ‰ì´ 0ë³´ë‹¤ í° ê²½ìš°
                     min = out_num[i];
                     minroom = i + 1;
                     minname = ID_name[i];
@@ -113,7 +113,7 @@ int main() {
             }
 
             if (min == 1000) {
-                minname = "¾øÀ½";
+                minname = "ì—†ìŒ";
             }
 
             if (insum != 0) {
@@ -121,7 +121,7 @@ int main() {
             }
             //selling = (sellsum/insum)*100;
 
-            printf("Àç°í¼ö·®: ");
+            printf("ì¬ê³ ìˆ˜ëŸ‰: ");
 
             for (int h = 0; h < a; h++) {
                 printf("%d ", inventory[h]);
@@ -129,9 +129,9 @@ int main() {
 
 
             printf("\n");
-            printf("ÃÑ ÆÇ¸Å·® : %f(ÆÇ¸ÅÀ²:%f%%)\n", sellsum, selling);
-            printf("°¡Àå ¸¹ÀÌ ÆÇ¸ÅµÈ »óÇ° : ID %d, »óÇ°¸í:%s, ÆÇ¸Å·® %d\n", maxroom, maxname, max);
-            printf("°¡Àå Àû°Ô ÆÇ¸ÅµÈ »óÇ° : ID %d, »óÇ°¸í:%s, ÆÇ¸Å·® %d\n", minroom, minname, min);
+            printf("ì´ íŒë§¤ëŸ‰ : %f(íŒë§¤ìœ¨:%f%%)\n", sellsum, selling);
+            printf("ê°€ì¥ ë§ì´ íŒë§¤ëœ ìƒí’ˆ : ID %d, ìƒí’ˆëª…:%s, íŒë§¤ëŸ‰ %d\n", maxroom, maxname, max);
+            printf("ê°€ì¥ ì ê²Œ íŒë§¤ëœ ìƒí’ˆ : ID %d, ìƒí’ˆëª…:%s, íŒë§¤ëŸ‰ %d\n", minroom, minname, min);
 
             for (int h = 0; h < a; h++) {
                 if (inventory[h] <= 2) {
@@ -141,13 +141,13 @@ int main() {
                     invent_shortage = inventory[h];
                     invent_ID = h + 1;
                     roomname = ID_name[h];
-                    printf("»óÇ° ID %d: »óÇ°¸í: %s Àç°íºÎÁ·(%d)\n", invent_ID, roomname, invent_shortage);
+                    printf("ìƒí’ˆ ID %d: ìƒí’ˆëª…: %s ì¬ê³ ë¶€ì¡±(%d)\n", invent_ID, roomname, invent_shortage);
                 }
             }
             break;
         case 4:
             for (int i = 0; i < a; i++) {
-                printf("ID %d »óÇ°¸í:", i + 1);
+                printf("ID %d ìƒí’ˆëª…:", i + 1);
                 scanf("%s", ID_name[i]);
                 printf("\n");
             }
