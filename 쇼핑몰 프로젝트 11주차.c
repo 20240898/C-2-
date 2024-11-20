@@ -31,14 +31,14 @@ int main() {
             ID[j][i] = 0;
         }
     }
-    
+
     do {
         printf("원하는 메뉴를 선택하세요.(1. 입고, 2. 판매, 3. 개별현황. 4. 전체현황. 5. 상품정보저장. 6.상품정보 불러오기.7종료): ");
         scanf("%d", &menu);
 
         switch (menu) {
         case 1:
-            system("clear");
+            system("cls");
             printf("상품 ID: ");
             scanf("%d", &ids);
             int i;
@@ -81,7 +81,7 @@ int main() {
 
             break;
         case 2:
-            system("clear");
+            system("cls");
             printf("상품 ID: ");
             scanf("%d", &ids);
             for (i = 0; i < 5; i++)
@@ -98,16 +98,19 @@ int main() {
             if (ID[i][0] != ids) {
                 printf("ID가 잘못 입력되었습니다.\n");
             }
+            ALLpanmea += ID[i][2];
+            ALLepgo += ID[i][1];
+            ALLpanmeayul = ((float)ALLpanmea / ALLepgo) * 100;
             break;
 
 
         case 3:
-            system("clear");
+            system("cls");
             printf("상품 ID: ");
             scanf("%d", &ids);
             for (i = 0; i < 5; i++)
             {
-                if (ID[i][0] == ids) 
+                if (ID[i][0] == ids)
                 {
                     printf("ID :%d\n", ID[i][0]);
                     printf("상품명 : %s\n", ID_name[i]);
@@ -116,27 +119,23 @@ int main() {
                     printf("판매량 :%d\n", ID[i][2]);
                     totalOutprice = 0;
                     totalOutprice = ID[i][2] * ID[i][3];
-                    
-                    printf("ID: %d 의 판매금액 :%d\n", ids ,totalOutprice);
+
+                    printf("ID: %d 의 판매금액 :%d\n", ids, totalOutprice);
                     break;
                 }
             }   if (i == 5)
-                {
+            {
                 printf("ID가 잘못 입력되었습니다.\n");
-                }
-            
+            }
+
             break;
 
         case 4:
-            system("clear");
-            ALLpanmea = 0;
-            ALLpanmeayul = 0;
-            ALLjeogo = 0;
-            ALLepgo =0;
+            system("cls");
             for (i = 0; i < 5; i++) {
                 ALLjeogo += ID[i][1] - ID[i][2];
-                ALLepgo += ID[i][1];
-                ALLpanmea += ID[i][2];
+                
+                
                 if (max < ID[i][2])
                 {
                     max = ID[i][2];
@@ -158,13 +157,13 @@ int main() {
             if (min == 1000) {
                 minroomname = "없음";
             }
-            ALLpanmeayul = ((float)ALLpanmea / ALLepgo) * 100;
+            
             printf("재고수량: ");
             for (int i = 0; i < 5; i++)
             {
                 printf("%d ", ID[i][1] - ID[i][2]);
             }
-            
+
             printf("\n");
             printf("총 판매량 : %d(판매율:%0.2f%%)\n", ALLpanmea, ALLpanmeayul);
             printf("가장 많이 판매된 상품 : ID %d, 상품명:%s, 판매량 %d\n", maxID, maxroomname, max);
@@ -182,61 +181,61 @@ int main() {
                 }
             }
             break;
-            case 5: // 상품 정보 저장하기
-                system("clear");
-                printf("저장할 날짜를 입력하세요 (YYYY-MM-DD 형식): ");
-                scanf("%s", date);
+        case 5: // 상품 정보 저장하기
+            system("cls");
+            printf("저장할 날짜를 입력하세요 (YYYY-MM-DD 형식): ");
+            scanf("%s", date);
 
-                char filename[20];
-                snprintf(filename, sizeof(filename), "%s.txt", date);
+            char filename[20];
+            snprintf(filename, sizeof(filename), "%s.txt", date);
 
-                FILE* fp = fopen(filename, "w");
-                if (fp == NULL) {
-                    printf("파일을 열 수 없습니다.\n");
-                    break;
-                }
-
-                // 개별 현황 저장
-                for (int i = 0; i < 5; i++) {
-                    if (ID[i][0] != 0) {
-                        fprintf(fp, "ID: %d, 이름: %s, 입고량: %d, 판매량: %d, 가격: %d\n", 
-                                ID[i][0], ID_name[i], ID[i][1], ID[i][2], ID[i][3]);
-                    }
-                }
-
-                // 전체 현황 저장
-                fprintf(fp, "총 판매량: %d, 판매율: %.2f%%\n", ALLpanmea, ALLpanmeayul);
-
-                fclose(fp);
-                printf("상품 정보를 %s에 저장했습니다.\n", filename);
+            FILE* fp = fopen(filename, "w");
+            if (fp == NULL) {
+                printf("파일을 열 수 없습니다.\n");
                 break;
+            }
 
-            case 6: // 상품 정보 불러오기
-                system("clear");
-                printf("불러올 날짜를 입력하세요 (YYYY-MM-DD 형식): ");
-                scanf("%s", date);
-
-                snprintf(filename, sizeof(filename), "%s.txt", date);
-                fp = fopen(filename, "r");
-                if (fp == NULL) {
-                    printf("해당 날짜의 파일이 없습니다.\n");
-                    break;
+            // 개별 현황 저장
+            for (int i = 0; i < 5; i++) {
+                if (ID[i][0] != 0) {
+                    fprintf(fp, "ID: %d, 이름: %s, 입고량: %d, 판매량: %d, 가격: %d\n",
+                        ID[i][0], ID_name[i], ID[i][1], ID[i][2], ID[i][3]);
                 }
+            }
 
-                printf("파일 내용을 불러옵니다:\n");
-                char line[200];
-                while (fgets(line, sizeof(line), fp)) {
-                    printf("%s", line);
-                }
+            // 전체 현황 저장
+            fprintf(fp, "총 판매량: %d, 판매율: %.2f%%\n", ALLpanmea, ALLpanmeayul);
 
-                fclose(fp);
+            fclose(fp);
+            printf("상품 정보를 %s에 저장했습니다.\n", filename);
+            break;
+
+        case 6: // 상품 정보 불러오기
+            system("cls");
+            printf("불러올 날짜를 입력하세요 (YYYY-MM-DD 형식): ");
+            scanf("%s", date);
+
+            snprintf(filename, sizeof(filename), "%s.txt", date);
+            fp = fopen(filename, "r");
+            if (fp == NULL) {
+                printf("해당 날짜의 파일이 없습니다.\n");
                 break;
+            }
+
+            printf("파일 내용을 불러옵니다:\n");
+            char line[200];
+            while (fgets(line, sizeof(line), fp)) {
+                printf("%s", line);
+            }
+
+            fclose(fp);
+            break;
         case 7:
             printf("프로그램을 종료합니다.\n");
             break;
         default:
             printf("잘못된 선택입니다.\n");
-            system("clear");
+            system("cls");
             break;
         }
     } while (menu != 7);
